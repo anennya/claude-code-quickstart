@@ -21,6 +21,10 @@ Use this workflow to ensure high-quality, spec-compliant code before merging.
 - [ ] **Kaizen**: Is the codebase better than we found it?
 - [ ] **Entropy Audit**: Did we delete as much as we added? Use the `reducing-entropy` skill to minimize waste.
 - [ ] **Style**: Matches `CLAUDE.md` and project history.
+- [ ] **UI Code Review** (for frontend code):
+  - Check against `.interface-design/system.md` if exists
+  - Flag spacing violations, depth inconsistencies, pattern drift
+  - Suggest corrections aligned with established system
 
 ## The Process
 1. Inspect the diff of the changes.

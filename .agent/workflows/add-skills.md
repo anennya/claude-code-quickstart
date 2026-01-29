@@ -34,4 +34,24 @@ Use this workflow to scout and integrate high-quality skills, patterns, or comma
 4. **Persistence**
    - Once Sandhya approves, create an **Implementation Plan** and follow the standard development cycle (RED-GREEN-REFACTOR).
 
+5. **Documentation & Citation**
+   - **Required**: Add the integrated skill to the **Third-Party Skills** table in `README.md`.
+   - Include: skill name, source repo link, license, and brief description.
+   - Add an attribution comment in the skill's `SKILL.md` header with original source, author, and license.
+
+   Example README entry:
+   ```markdown
+   | `skill-name` | [author/repo](https://github.com/author/repo) | MIT | Brief description |
+   ```
+
+   Example SKILL.md attribution:
+   ```html
+   <!--
+     Original source: https://github.com/author/repo
+     Author: author
+     License: MIT
+     Integrated into claude-code-quickstart SDK
+   -->
+   ```
+
 **Internal Note**: Use the `writing-skills` skill when integrating the final results.

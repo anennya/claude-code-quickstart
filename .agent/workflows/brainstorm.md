@@ -21,6 +21,10 @@ Use this workflow BEFORE starting any creative work to turn ideas into fully for
      - **Audience**: Who is the user? How will they access it? (REQUIRED for UI work, see `ui-development` skill).
      - **Failure Modes**: What are the edge cases? How do we handle errors?
      - **Success Criteria**: What does "done" look like?
+   - **If UI/Frontend Work Detected**:
+     - Trigger `ui-development` skill
+     - Run domain exploration (concepts, color world, signature, defaults)
+     - Capture design direction in the design doc
 
 2. **Exploration**
    - Propose 2-3 different approaches with trade-offs.

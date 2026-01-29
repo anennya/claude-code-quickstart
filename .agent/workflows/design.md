@@ -36,6 +36,11 @@ Use this workflow once a design has been approved to create a bite-sized, execut
    - **Step 4: Verify pass**: Specify command and expected output.
    - **Step 5: Commit**: Provide the bash command and atomic message.
 
+4. **For UI Features**
+   - Check for `.interface-design/system.md`
+   - If exists: Load and apply established patterns in implementation plan
+   - If not: Include design system creation as a task in the plan
+
 ## Persistence
 - Save the plan to `docs/plans/YYYY-MM-DD-<feature-name>.md`.
 - Ask the user: "Ready to start implementation? Use `/implement`."

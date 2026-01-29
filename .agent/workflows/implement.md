@@ -23,6 +23,10 @@ Use this workflow to execute a structured implementation plan step-by-step.
      - **GREEN**: Write minimal code to make the test pass.
      - **REFACTOR**: Clean up code while keeping tests green.
      - **COMMIT**: Use the exact commit command from the plan.
+   - **UI Task Detection**:
+     - When implementing UI components, auto-load `.interface-design/system.md` if exists
+     - Apply craft principles from `ui-development` skill
+     - Offer to save new patterns after completion
 
 3. **Subagent Handoff (Optional)**
    - If a task is complex, you may spawn a subagent to handle the RED-GREEN-REFACTOR cycle, but you MUST review its work against the plan's success criteria.
