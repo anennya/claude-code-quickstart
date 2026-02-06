@@ -15,6 +15,21 @@ Use this workflow once a design has been approved to create a bite-sized, execut
 - **Deep Planning**: For high-stakes or complex features, use the `gepetto` skill to perform exhaustive research and specs synthesis before writing the plan.
 - **Visual Clarity**: Use the `c4-architecture` skill to define system boundaries and container relationships for architectural changes.
 
+## Process (Before Generating Plan)
+
+**IF FRONTEND CHANGES ARE REQUIRED:**
+1. **Mockup First**: You MUST create a single-file HTML prototype (e.g., `public/prototype_<feature_name>.html`) to mimic functionality and aesthetics.
+   - Use standard HTML/CSS/JS (no build step required).
+   - Ensure it matches `BRAND_GUIDELINES.md`.
+   - Mimic interactions (modals, transitions, states) using vanilla JS.
+2. **User Validation**: Present this mockup to the user for "look and feel" approval.
+3. **Iterate**: Refine the mockup until the user says "Yes, build this."
+4. **Data First Check**: Before planning UI, define the data source.
+   - WHERE does the data come from? (API? Local Storage? File?)
+   - IF the source doesn't exist, create a task to build it.
+   - *Tip*: "Mocking" in the UI component is technical debt. Mock at the source/API level instead.
+5. **Plan**: ONLY then, proceed to write the Implementation Plan below, referencing the approved mockup as the "Spec".
+
 ## Plan Structure (MUST include these sections)
 
 1. **Header**

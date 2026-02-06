@@ -31,6 +31,7 @@ Document the breakdown in TodoWrite before starting fixes.
 - **Reproduce**: Confirm the bug exists (write a failing test).
 - **Isolate**: Identify root cause, not just symptoms.
 - **Fix**: Apply minimal, targeted change.
+  - *Tip*: When ensuring functionality on legacy CommonJS (`require`) files, prefer `vi.spyOn` over `vi.mock` to avoid module interop issues.
 - **Verify**:
   - Failing test now passes
   - Full test suite passes (no regressions)

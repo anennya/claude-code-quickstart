@@ -10,6 +10,7 @@ Use this workflow to execute a structured implementation plan step-by-step.
 - **No Production Code Without a Failing Test**: The Iron Law of TDD.
 - **Atomic Execution**: Complete one task, verify it, and commit it before moving on.
 - **Systematic Verification**: Never assume it works because it "looks right".
+- **Data First**: Verify data availability/structure before building the UI component that displays it.
 
 ## The Process
 

@@ -19,38 +19,32 @@ Use this workflow to wrap up a development session and maintain a clean project 
 
 ## The Process
 
-### 1. Verification
-- Run ALL tests in the project to ensure no regressions.
-- Verify `CLAUDE.md` is updated if any new patterns were established.
+## The Process
 
-### 2. Session Review
-Review the active phase and generate a **numbered list** of noteworthy items:
-- Interesting new errors encountered
-- Difficult technical hurdles overcome
-- Important decisions made and their rationale
-- Unexpected discoveries or learnings
+### 1. Integration of Learnings
+- **Pull Lessons**: Retrieve the "Lessons Learned" established in the recent `/teach-me` session.
+- **Update Lessons Artifact**: Ensure `lessons_learned.md` is current.
 
-Present list to user in this format:
-```
-Session Learnings:
-1. [Error/Hurdle/Decision]: Brief description
-2. [Error/Hurdle/Decision]: Brief description
-...
-```
+### 2. Documentation Update
+- **Project Structure**: Update `PROJECT_HISTORY.md` with:
+    - Date and Phase
+    - Key Accomplishments (Bullet points)
+    - Key Learnings (from Step 1)
+- **Roadmap**: Update `PROJECT_ROADMAP.md` to mark completed items.
+- **Bugs**: Ensure `docs/BUGS.md` reflects any new items or resolutions.
 
-**WAIT for user selection** before proceeding. User will indicate which items (by number) to include in project history.
-
-### 3. Documentation
-- **History**: Update `PROJECT_HISTORY.md` with:
-  - What was built
-  - User-selected learnings from step 2
-  - Git commit hashes
-- **Changelog**: Use the `changelog-generator` logic for user-facing summary if needed.
+### 3. Workflow Synchronization
+- Run the `/sync-workflows` workflow to ensure local workflow improvements are upstreamed to the quickstart repo (if applicable) or synced down.
+    - *Note*: If we modified a workflow locally (like we just did for `teach-me`), we want to save that.
 
 ### 4. Git Hygiene
-- Stage any remaining changes.
-- Commit with a descriptive message.
-- Push to the remote branch.
+- **Commit**: Ensure all changes (including doc updates) are committed.
+- **Push**: Push the current feature/phase branch to valid remote.
 
-### 5. Summary
+### 5. Phase Transition (If Applicable)
+- **Check Roadmap**: Did we just complete a Phase?
+- **Branch**: If yes, create the branch for the *next* phase (e.g., `git checkout -b feat/phase-4-visuals`).
+- **Notify**: Inform user of the new active branch.
+
+### 6. Summary
 - Provide a final brief summary of the session to the user.
