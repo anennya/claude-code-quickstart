@@ -37,7 +37,7 @@ Use this workflow to ensure high-quality, spec-compliant code before merging.
 **Before approving any PR**, verify these **P0 (Blocking)** requirements:
 
 ### 1. External Dependencies
-- [ ] Timeouts on all HTTP/database calls
+- [ ] Timeouts on all HTTP/database calls (10s maximum)
 - [ ] Retry logic with exponential backoff
 - [ ] Graceful degradation when dependencies fail
 
@@ -60,6 +60,12 @@ Use this workflow to ensure high-quality, spec-compliant code before merging.
 - [ ] Validated at API boundaries
 - [ ] Type checking enforced
 - [ ] Size limits on uploads/requests
+
+### 6. Serverless Safety (Vercel)
+- [ ] Use `linkedom` instead of `jsdom` (prevents ESM/CJS bundler crashes)
+- [ ] Explicitly set `export const runtime = 'nodejs'` for all API routes
+- [ ] Use dynamic imports (`await import()`) for environment-dependent modules
+- [ ] Verify no ESM-only transitive dependencies are being `require()`'d by your imports
 
 ### Quick Examples
 

@@ -24,6 +24,7 @@ Use this workflow when a feature is "code complete" but needs verification of th
    - [ ] **Distraction-Free Audit**: Does the focused view (e.g. Reader) remove unnecessary global navigation?
    - [ ] **Responsiveness**: Check mobile vs desktop layout.
    - [ ] **Brand**: Does it feel "Playful and Creative" as per guidelines?
+   - [ ] **Brand Voice Audit**: Do empty states and headers speak like a witty, encouraging librarian (not "No items found", but "Your queue is clean. Go find something world-changing")?
 
 3. **Discovery & Fixes**
    - Any UX polish items found should be added to `BUGS.md` immediately with the prefix `[UX]`.

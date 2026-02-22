@@ -55,7 +55,12 @@ Use this workflow once a design has been approved to create a bite-sized, execut
    - Identify any known shortcuts or "hacks" being introduced to meet the goal.
    - List them explicitly so they can be added to `BUGS.md` or a technical debt tracker if the plan is approved without addressing them immediately.
 
-5. **For UI Features**
+5. **Production Reliability (P0)**
+   - **Timeouts**: Every Supabase query or external `fetch` MUST include an `AbortController` signal with a 10s maximum timeout.
+   - **Input Validation**: Specify allowlists for all API update payloads and validate enums (e.g., article location).
+   - **Loading States**: Every new route MUST include a `loading.tsx` with skeleton loaders that match the brand's aesthetic.
+
+6. **For UI Features**
    - Check for `.interface-design/system.md`
    - If exists: Load and apply established patterns in implementation plan
    - If not: Include design system creation as a task in the plan
