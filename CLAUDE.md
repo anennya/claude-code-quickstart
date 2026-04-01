@@ -23,28 +23,33 @@ Use these **Slash Commands** (triggered via `.agent/workflows/`) to manage the p
 - **Process**: Ask Socratic questions one at a time. Propose 2-3 approaches.
 - **Output**: `docs/plans/YYYY-MM-DD-<topic>-design.md`.
 
-### 2. `/design` (Implementation Planning)
+### 2. `/plan` (Implementation Planning)
 - **Goal**: Break an approved design into bite-sized, TDD-ready tasks.
 - **Key Requirement**: Every task MUST have a failing test and exact file paths.
 - **Output**: `docs/plans/YYYY-MM-DD-<feature-name>.md`.
 
-### 3. `/implement` (Execution)
-- **Goal**: Execute the plan using the RED-GREEN-REFACTOR cycle.
+### 3. `/build` (Execution)
+- **Goal**: Execute an approved implementation plan using subagents and TDD.
 - **Enforcement**: Watch the test fail, write minimal code, then refactor.
 
-### 4. `/code-review` (Quality Assurance)
-- **Goal**: Verify spec compliance and technical excellence.
+### 4. `/audit` (Quality Assurance)
+- **Goal**: Perform a combined technical and UX audit of newly built code.
 - **Requirement**: Run the tests yourself. Evidence over assertions.
 
-### 5. `/connect` (External Integration)
-- **Goal**: Interact with 1000+ apps via Composio.
-- **Process**: Discover app → Authorize → Execute Action → Verify.
+### 5. `/fix` (Bug Resolution)
+- **Goal**: Resolve all bugs and technical debt before phase completion.
+- **Enforcement**: No exceptions — all issues must be addressed.
 
-### 6. `/add-skills` (Meta-Development)
-- **Goal**: Evaluate and integrate skills from external repos.
-- **Process**: Crawl repo → Analyze for SDK fit → Make recommendation.
+### 6. `/log` (Issue Tracking)
+- **Goal**: Log bugs, technical debt, or feature ideas into the tracking system.
 
-### 7. `/closeout` (Session Wrap-up)
+### 7. `/teach-me` (Learning Extraction)
+- **Goal**: Extract intuition-building lessons and process improvements from the recent work session.
+
+### 8. `/sync-workflows` (Workflow Sync)
+- **Goal**: Synchronize global agent workflows to the claude-code-quickstart repository.
+
+### 9. `/closeout` (Session Wrap-up)
 - **Goal**: Maintain project health, continuous improvement, and history.
 - **Process**: Kaizen improvement → Generate Changelog → Update `PROJECT_HISTORY.md` → Push changes.
 
