@@ -1,6 +1,6 @@
 # My App — Claude Code Instructions
 
-@~/Documents/git/claude-code-quickstart/CLAUDE.md
+@/PATH/TO/claude-code-quickstart/CLAUDE.md
 
 ---
 

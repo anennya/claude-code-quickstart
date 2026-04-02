@@ -1,6 +1,10 @@
-# Sandhya Simhan's Antigravity SDK: Unified Agentic Tooling
+# Sandhya Simhan's Claude Code SDK: Unified Agentic Tooling
 
-A high-performance library of skills and workflows for agentic coding assistants, optimized for the Antigravity IDE. This repository merges the best of **Claude Code Quickstart** and **Superpowers** into a single, unified framework.
+Building an app with Claude Code is powerful — but without structure, sessions drift, context gets lost, and it's hard to know what to do next.
+
+This repo gives you a repeatable system for going from idea to working app. It provides an opinionated development lifecycle (brainstorm → plan → build → audit → fix → ship), enforces test-driven development, and keeps a running history of every session. Use it as a reusable SDK that sits on your machine and plugs into any project — or follow along as a workshop participant.
+
+It's for anyone who wants to build with Claude Code and not start from scratch every time.
 
 ## Core Features
 
@@ -15,33 +19,107 @@ A high-performance library of skills and workflows for agentic coding assistants
 
 ## Getting Started
 
-1. **Read the Manual**: Start with [CLAUDE.md](file:///CLAUDE.md) to understand the operating standards.
-2. **Review your History**: Check [PROJECT_HISTORY.md](file:///PROJECT_HISTORY.md) for the latest project context.
-3. **Use the Skills**: Explore the [skills/](file:///skills/) directory for atomic "how-to" guides.
+### Prerequisites
+
+- **Claude Code installed** — Mac app or CLI
+- **Verify slash commands work** by typing `/` in Claude Code and checking that commands appear in autocomplete
+- If commands don't appear in the terminal, see [Troubleshooting](#troubleshooting) below
+
+---
+
+### How to Use This Repo
+
+Clone this repo once and keep it on your machine. It acts as a shared toolkit — when you start a new app, you copy one file (`CLAUDE-template.md`) into your project and it pulls in all the commands, rules, and workflows from here automatically. You never need to copy the whole thing.
+
+---
+
+### One-Time Setup
+
+**Clone the repo:**
+```bash
+git clone https://github.com/anennya/claude-code-quickstart.git
+cd claude-code-quickstart
+```
+
+**Fix the `@` import path** — `CLAUDE-template.md` uses an `@` import to pull in the SDK rules. Run this one-liner from inside the repo to set the path to wherever you cloned it:
+```bash
+sed -i '' "s|@/PATH/TO/claude-code-quickstart|@$(pwd)|g" CLAUDE-template.md
+```
+
+**Make slash commands globally available** so they work in any project:
+```bash
+mkdir -p ~/.claude/commands && cp .claude/commands/*.md ~/.claude/commands/
+```
+Restart Claude Code after this.
+
+---
+
+### Starting a New Project
+
+1. Create your new project folder and initialize git
+2. Copy `CLAUDE-template.md` into it as `CLAUDE.md`:
+   ```bash
+   cp /path/to/claude-code-quickstart/CLAUDE-template.md ~/your-new-project/CLAUDE.md
+   ```
+3. Fill in the fields at the top of `CLAUDE.md` — name, purpose, stack, constraints
+4. Open Claude Code in your project — it picks up `CLAUDE.md` automatically
+
+> **Don't run `/init`** — that command reverse-engineers an existing codebase into a `CLAUDE.md`. You already have one; running `/init` would overwrite it.
+
+---
+
+### Your First Session
+
+Open Claude Code in your project and type `/brainstorm`. Bring any rough idea — it doesn't need to be fully formed. Claude will ask Socratic questions one at a time to sharpen it, then produce a design doc in `docs/plans/`.
+
+---
+
+### The Development Lifecycle
+
+Work through these commands in order for each feature:
+
+| Command | When to use |
+|---|---|
+| `/brainstorm` | Turn a rough idea into a design doc |
+| `/plan` | Break an approved design into TDD-ready tasks |
+| `/build` | Execute the plan using subagents and TDD |
+| `/audit` | Review finished code — runs tests, produces evidence |
+| `/fix` | Resolve all bugs and debt flagged by the audit |
+| `/log` | Log a bug or idea without starting work on it |
+| `/teach-me` | Extract lessons from the session |
+| `/closeout` | Changelog, update `PROJECT_HISTORY.md`, commit and push |
+
+---
+
+### Where Things Live
+
+| What | Where |
+|---|---|
+| Design docs | `docs/plans/YYYY-MM-DD-<topic>-design.md` |
+| Implementation plans | `docs/plans/YYYY-MM-DD-<feature-name>.md` |
+| Session history | `PROJECT_HISTORY.md` |
+| Slash commands | `.claude/commands/` (project) or `~/.claude/commands/` (global) |
+| Skills reference | `skills/` |
+
+---
+
+### Where to Go From Here
+
+- **Customize your `CLAUDE.md`**: Add project-specific rules and conventions as your app evolves
+- **Write your own slash commands**: Add `.md` files to `.claude/commands/` using the same frontmatter format as existing commands. Copy to `~/.claude/commands/` to make them global
+- **Add new skills**: Drop a `.md` file into `skills/` and reference it from `CLAUDE.md`. See `skills/writing-skills/` for the authoring guide
+- **Keep the SDK up to date**: Pull from this repo periodically — your projects get updates automatically via the `@` import:
+  ```bash
+  cd /path/to/claude-code-quickstart && git pull
+  ```
 
 ## Repository Structure
 
-- `.agent/workflows/`: Unified slash command definitions.
-- `skills/`: Atomic reference guides for specific techniques.
-- `docs/plans/`: Storage for designs and implementation plans.
-- `tests/`: Extensive test suites for verifying agent behavior.
-
-## Workflows
-
-Trigger workflows directly using slash commands in your agentic IDE:
-
-### Core Development Cycle
-- `/brainstorm`: Refine an idea into a design with audience research
-- `/design`: Create a TDD implementation plan with architectural rigor
-- `/implement`: Execute a plan step-by-step with observability
-- `/code-review`: Perform a technical quality check and trace review
-- `/closeout`: Apply Kaizen improvements, generate changelogs, and finalize history
-
-### Utility Commands
-- `/add-bug`: Add a bug to the tracking table without starting work on it
-- `/add-feature`: Add a feature request to the implementation plan without starting work on it
-- `/add-skills`: Scout and integrate patterns from new repositories
-- `/connect`: Bridge to 1000+ external apps via Composio
+- `.claude/commands/`: Slash command definitions for the development lifecycle.
+- `skills/`: Reference guides for specific techniques (TDD, debugging, UI, etc.).
+- `docs/plans/`: Where design docs and implementation plans get saved during sessions.
+- `agents/`: Subagent definitions used by the build and audit workflows.
+- `tests/`: Test suites for verifying skill and workflow behavior.
 
 ## Skills
 
@@ -70,6 +148,24 @@ Low-frequency skills for specific use cases. See [skills/specialized/](file:///s
 - **`image-generator`** - Gemini-powered branded image generation
 - **`c4-architecture`** - C4 architecture diagrams for system design
 - **`composio-integrations`** - Composio connections to 1000+ external apps
+
+## Troubleshooting
+
+### Slash commands not appearing in terminal autocomplete
+
+If custom slash commands (from `.claude/commands/`) show up in the Mac app but not in the terminal, you likely have multiple Claude Code installations and the terminal is using the wrong one.
+
+**Diagnose:**
+```
+/doctor
+```
+Look for "Multiple installations found". If you see both `npm-global` and `native`, the terminal is probably using the npm version.
+
+**Fix — switch to the native install:**
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+```
+Open a new terminal tab and verify with `which claude` — it should now point to `~/.local/bin/claude`.
 
 ---
 

@@ -16,7 +16,7 @@ You are a high-performance software engineer. Your goals are:
 
 ## The Unified Development Lifecycle
 
-Use these **Slash Commands** (triggered via `.agent/workflows/`) to manage the project lifecycle:
+Use these **Slash Commands** (defined in `.claude/commands/`) to manage the project lifecycle:
 
 ### 1. `/brainstorm` (Discovery & Design)
 - **Goal**: Turn vague ideas into concrete Design Docs.
@@ -46,10 +46,7 @@ Use these **Slash Commands** (triggered via `.agent/workflows/`) to manage the p
 ### 7. `/teach-me` (Learning Extraction)
 - **Goal**: Extract intuition-building lessons and process improvements from the recent work session.
 
-### 8. `/sync-workflows` (Workflow Sync)
-- **Goal**: Synchronize global agent workflows to the claude-code-quickstart repository.
-
-### 9. `/closeout` (Session Wrap-up)
+### 8. `/closeout` (Session Wrap-up)
 - **Goal**: Maintain project health, continuous improvement, and history.
 - **Process**: Kaizen improvement → Generate Changelog → Update `PROJECT_HISTORY.md` → Push changes.
 
