@@ -35,23 +35,42 @@ Clone this repo once and keep it on your machine. It acts as a shared toolkit �
 
 ### One-Time Setup
 
-**Clone the repo:**
+**1. Clone the repo:**
 ```zsh
 git clone https://github.com/anennya/claude-code-quickstart.git
 cd claude-code-quickstart
 ```
 
-**Fix the `@` import path** — `CLAUDE-template.md` uses an `@` import to pull in the SDK rules. Run this from inside the repo directory in the terminal to set the path to wherever you cloned it:
+**2. Fix the `@` import path** — run this from inside the repo directory so `CLAUDE-template.md` knows where the SDK lives on your machine:
 ```
 sed -i '' "s|@/PATH/TO/claude-code-quickstart|@$(pwd)|g" CLAUDE-template.md
 ```
 Verify it worked: `head -3 CLAUDE-template.md` should show your actual path, not `/PATH/TO/...`.
 
-**Make slash commands globally available** so they work in any project:
+**3. Install slash commands** — this makes `/brainstorm`, `/plan`, `/build` etc. available in Claude Code:
+
+*Globally (recommended) — available in every project:*
 ```zsh
 mkdir -p ~/.claude/commands && cp .claude/commands/*.md ~/.claude/commands/
 ```
-Restart Claude Code after this.
+
+*Per-project — copy into a specific project instead:*
+```zsh
+cp -r /path/to/claude-code-quickstart/.claude ~/your-new-project/
+```
+Restart Claude Code after either option.
+
+**4. Install skills** — skills enhance the commands with deeper guidance (TDD, UI design, architecture, etc.). They're not required for commands to work, but recommended.
+
+*Globally (recommended) — available in every project:*
+```zsh
+mkdir -p ~/.claude/skills && cp -r skills/* ~/.claude/skills/
+```
+
+*Per-project — copy into a specific project instead:*
+```zsh
+cp -r /path/to/claude-code-quickstart/skills ~/your-new-project/
+```
 
 ---
 

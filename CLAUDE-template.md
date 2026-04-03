@@ -6,7 +6,7 @@
 
 ## About This App
 
-**Name:** <!-- e.g. Recipe Finder -->
+**Name:** <!-- Weekly Meal Planner -->
 **Purpose:** <!-- One sentence: what does this app do and for whom? -->
 **Stack:** <!-- e.g. Next.js, Supabase, Tailwind CSS -->
 **Key constraints:** <!-- e.g. mobile-first, must work offline, free tier only -->
