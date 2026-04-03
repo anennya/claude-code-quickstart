@@ -35,22 +35,42 @@ Clone this repo once and keep it on your machine. It acts as a shared toolkit �
 
 ### One-Time Setup
 
-**Clone the repo:**
-```bash
+**1. Clone the repo:**
+```zsh
 git clone https://github.com/anennya/claude-code-quickstart.git
 cd claude-code-quickstart
 ```
 
-**Fix the `@` import path** — `CLAUDE-template.md` uses an `@` import to pull in the SDK rules. Run this one-liner from inside the repo to set the path to wherever you cloned it:
-```bash
+**2. Fix the `@` import path** — run this from inside the repo directory so `CLAUDE-template.md` knows where the SDK lives on your machine:
+```
 sed -i '' "s|@/PATH/TO/claude-code-quickstart|@$(pwd)|g" CLAUDE-template.md
 ```
+Verify it worked: `head -3 CLAUDE-template.md` should show your actual path, not `/PATH/TO/...`.
 
-**Make slash commands globally available** so they work in any project:
-```bash
+**3. Install slash commands** — this makes `/brainstorm`, `/plan`, `/build` etc. available in Claude Code:
+
+*Globally (recommended) — available in every project:*
+```zsh
 mkdir -p ~/.claude/commands && cp .claude/commands/*.md ~/.claude/commands/
 ```
-Restart Claude Code after this.
+
+*Per-project — copy into a specific project instead:*
+```zsh
+cp -r /path/to/claude-code-quickstart/.claude ~/your-new-project/
+```
+Restart Claude Code after either option.
+
+**4. Install skills** — skills enhance the commands with deeper guidance (TDD, UI design, architecture, etc.). They're not required for commands to work, but recommended.
+
+*Globally (recommended) — available in every project:*
+```zsh
+mkdir -p ~/.claude/skills && cp -r skills/* ~/.claude/skills/
+```
+
+*Per-project — copy into a specific project instead:*
+```zsh
+cp -r /path/to/claude-code-quickstart/skills ~/your-new-project/
+```
 
 ---
 
@@ -58,7 +78,7 @@ Restart Claude Code after this.
 
 1. Create your new project folder and initialize git
 2. Copy `CLAUDE-template.md` into it as `CLAUDE.md`:
-   ```bash
+   ```
    cp /path/to/claude-code-quickstart/CLAUDE-template.md ~/your-new-project/CLAUDE.md
    ```
 3. Fill in the fields at the top of `CLAUDE.md` — name, purpose, stack, constraints
@@ -109,7 +129,7 @@ Work through these commands in order for each feature:
 - **Write your own slash commands**: Add `.md` files to `.claude/commands/` using the same frontmatter format as existing commands. Copy to `~/.claude/commands/` to make them global
 - **Add new skills**: Drop a `.md` file into `skills/` and reference it from `CLAUDE.md`. See `skills/writing-skills/` for the authoring guide
 - **Keep the SDK up to date**: Pull from this repo periodically — your projects get updates automatically via the `@` import:
-  ```bash
+  ```zsh
   cd /path/to/claude-code-quickstart && git pull
   ```
 
@@ -162,7 +182,7 @@ If custom slash commands (from `.claude/commands/`) show up in the Mac app but n
 Look for "Multiple installations found". If you see both `npm-global` and `native`, the terminal is probably using the npm version.
 
 **Fix — switch to the native install:**
-```bash
+```
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
 ```
 Open a new terminal tab and verify with `which claude` — it should now point to `~/.local/bin/claude`.
